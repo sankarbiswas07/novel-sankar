@@ -12,6 +12,7 @@ import {
   Color,
   TextStyle,
   HighlightExtension,
+  Mathematics
 } from "novel/extensions";
 import { UploadImagesPlugin } from "novel/plugins";
 
@@ -124,4 +125,5 @@ export const defaultExtensions = [
   HighlightExtension.configure({
     multicolor: true,
   }),
+  Mathematics,
 ];

@@ -6,6 +6,7 @@ import {
   UnderlineIcon,
   StrikethroughIcon,
   CodeIcon,
+  FunctionSquare
 } from "lucide-react";
 import type { SelectorItem } from "./node-selector";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,17 @@ export const TextButtons = () => {
       command: (editor) => editor.chain().focus().toggleCode().run(),
       icon: CodeIcon,
     },
+    {
+      name: "math",
+      isActive: (editor) => editor.isActive("math"),
+      command: (editor) => {
+        const { from, to } = editor.state.selection;
+        const text = editor.state.doc.textBetween(from, to);
+        if (!text) return;
+        editor.chain().focus().setLatex({ latex: text }).run();
+      },
+      icon: FunctionSquare
+    }
   ];
 
   return (
